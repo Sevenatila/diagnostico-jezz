@@ -380,24 +380,34 @@
         }
 
         .carousel-wrapper {
-            position: relative;
+            display: flex;
             width: 100%;
-            height: auto;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+            scroll-snap-type: x mandatory;
+        }
+
+        .carousel-wrapper::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
         }
 
         .carousel-slide {
-            display: none;
+            flex: 0 0 100%;
             width: 100%;
+            scroll-snap-align: start;
         }
 
         .carousel-slide.active {
-            display: block;
+            /* Not needed for horizontal scroll */
         }
 
         .carousel-slide img {
             width: 100%;
             height: auto;
             display: block;
+            pointer-events: none;
         }
 
 
@@ -1190,36 +1200,56 @@
 
         // Carousel functionality
         let currentSlideIndex = 0;
+        const carouselWrapper = document.querySelector('.carousel-wrapper');
         const slides = document.querySelectorAll('.carousel-slide');
         const dots = document.querySelectorAll('.dot');
 
-        function showSlide(index) {
-            // Hide all slides
-            slides.forEach(slide => slide.classList.remove('active'));
+        function updateActiveDot() {
             dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[currentSlideIndex]) {
+                dots[currentSlideIndex].classList.add('active');
+            }
+        }
 
-            // Show current slide
-            if (slides[index]) {
-                slides[index].classList.add('active');
-                dots[index].classList.add('active');
+        function scrollToSlide(index) {
+            if (carouselWrapper && slides[index]) {
+                const slideWidth = slides[index].offsetWidth;
+                carouselWrapper.scrollTo({
+                    left: slideWidth * index,
+                    behavior: 'smooth'
+                });
+                currentSlideIndex = index;
+                updateActiveDot();
             }
         }
 
         function changeSlide(direction) {
-            currentSlideIndex += direction;
+            const nextIndex = currentSlideIndex + direction;
 
-            if (currentSlideIndex >= slides.length) {
-                currentSlideIndex = 0;
-            } else if (currentSlideIndex < 0) {
-                currentSlideIndex = slides.length - 1;
+            if (nextIndex >= slides.length) {
+                scrollToSlide(0);
+            } else if (nextIndex < 0) {
+                scrollToSlide(slides.length - 1);
+            } else {
+                scrollToSlide(nextIndex);
             }
-
-            showSlide(currentSlideIndex);
         }
 
         function currentSlide(index) {
-            currentSlideIndex = index - 1;
-            showSlide(currentSlideIndex);
+            scrollToSlide(index - 1);
+        }
+
+        // Detect scroll position to update active dot
+        if (carouselWrapper) {
+            carouselWrapper.addEventListener('scroll', () => {
+                const slideWidth = slides[0].offsetWidth;
+                const newIndex = Math.round(carouselWrapper.scrollLeft / slideWidth);
+
+                if (newIndex !== currentSlideIndex && newIndex < slides.length) {
+                    currentSlideIndex = newIndex;
+                    updateActiveDot();
+                }
+            });
         }
 
         // Auto-advance carousel every 10 seconds
