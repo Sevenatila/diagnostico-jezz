@@ -1,0 +1,7 @@
+# Ignore reference images and text files
+*.png
+*.txt
+.claude/
+
+# Keep only the main files
+!index.html
