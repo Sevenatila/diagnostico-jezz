@@ -400,31 +400,6 @@
             display: block;
         }
 
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 255, 136, 0.8);
-            border: none;
-            color: white;
-            font-size: 2rem;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 50%;
-            transition: background 0.3s ease;
-        }
-
-        .carousel-btn:hover {
-            background: rgba(0, 255, 136, 1);
-        }
-
-        .carousel-prev {
-            left: 15px;
-        }
-
-        .carousel-next {
-            right: 15px;
-        }
 
         .carousel-dots {
             text-align: center;
@@ -775,19 +750,6 @@
                 max-width: 100%;
             }
 
-            .carousel-btn {
-                font-size: 1.5rem;
-                padding: 8px 12px;
-            }
-
-            .carousel-prev {
-                left: 10px;
-            }
-
-            .carousel-next {
-                right: 10px;
-            }
-
             .carousel-dots {
                 padding: 15px;
             }
@@ -1022,9 +984,6 @@
                         <img src="IMG/03.jpg" alt="Depoimento Thalisson - Três entrevistas agendadas" />
                     </div>
                 </div>
-
-                <button class="carousel-btn carousel-prev" onclick="changeSlide(-1)">‹</button>
-                <button class="carousel-btn carousel-next" onclick="changeSlide(1)">›</button>
 
                 <div class="carousel-dots">
                     <span class="dot active" onclick="currentSlide(1)"></span>
@@ -1263,10 +1222,10 @@
             showSlide(currentSlideIndex);
         }
 
-        // Auto-advance carousel every 5 seconds
+        // Auto-advance carousel every 10 seconds
         setInterval(() => {
             changeSlide(1);
-        }, 5000);
+        }, 10000);
     </script>
 </body>
 </html>
