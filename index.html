@@ -455,11 +455,17 @@
             pointer-events: none;
         }
 
-        .carousel-slide img.img-center {
-            object-fit: cover;
-            object-position: center;
-            transform: scale(1.1);
-            transform-origin: center;
+        .carousel-slide.img-vertical-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .carousel-slide.img-vertical-center img {
+            max-height: 400px;
+            width: auto;
+            object-fit: contain;
         }
 
 
@@ -1074,11 +1080,11 @@
                     <div class="carousel-slide active">
                         <img src="IMG/01.jpg" alt="Depoimento Mírian - 6k em vendas como Closer" />
                     </div>
-                    <div class="carousel-slide">
-                        <img src="IMG/02.jpg" alt="Depoimento Thalisson - Entrevistas de trabalho aprovadas" class="img-center" />
+                    <div class="carousel-slide img-vertical-center">
+                        <img src="IMG/02.jpg" alt="Depoimento Thalisson - Entrevistas de trabalho aprovadas" />
                     </div>
-                    <div class="carousel-slide">
-                        <img src="IMG/03.jpg" alt="Depoimento Thalisson - Três entrevistas agendadas" class="img-center" />
+                    <div class="carousel-slide img-vertical-center">
+                        <img src="IMG/03.jpg" alt="Depoimento Thalisson - Três entrevistas agendadas" />
                     </div>
                 </div>
 
