@@ -844,14 +844,50 @@
             const data = {
                 name: formData.get('name'),
                 email: formData.get('email'),
-                phone: formData.get('phone')
+                phone: formData.get('phone'),
+                source: 'Raio-X Closer 360',
+                landing_page: 'https://raiox360-v2.vercel.app',
+                timestamp: new Date().toISOString()
             };
 
-            // Here you would typically send the data to your backend
-            console.log('Form data:', data);
+            // Disable submit button and show loading
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            submitButton.disabled = true;
+            submitButton.innerHTML = 'Enviando...';
 
-            // Show success message (placeholder)
-            alert('Obrigado! Em breve entraremos em contato para agendar seu diagnóstico.');
+            // Send to Go High Level webhook
+            fetch('https://services.leadconnectorhq.com/hooks/WdHEk2uOQHpKg235mLsx/webhook-trigger/5620fe80-4434-4218-8e26-531de729e34e', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Success - show confirmation message
+                    alert('✅ Obrigado! Em breve entraremos em contato para agendar seu diagnóstico.');
+
+                    // Reset form
+                    this.reset();
+
+                    // Optional: Redirect or show success page
+                    // window.location.href = '#success';
+
+                } else {
+                    throw new Error('Erro na submissão');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('❌ Erro ao enviar dados. Tente novamente ou entre em contato conosco.');
+            })
+            .finally(() => {
+                // Restore button
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalText;
+            });
         });
 
         // FAQ toggle functionality
