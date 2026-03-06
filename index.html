@@ -517,24 +517,224 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            /* Hero Section Mobile */
+            .hero {
+                padding: 40px 0;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                margin-bottom: 20px;
+                line-height: 1.2;
             }
 
             .hero h2 {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+                line-height: 1.3;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+
+            /* Diagnostic Info Mobile */
+            .diagnostic-info {
+                padding: 20px;
+                margin: 30px 0;
+            }
+
+            .diagnostic-info h3 {
+                font-size: 1.2rem;
+                margin-bottom: 15px;
+            }
+
+            .diagnostic-item {
+                font-size: 0.95rem;
+                margin-bottom: 12px;
+            }
+
+            /* CTA Button Mobile */
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1rem;
+            }
+
+            /* Section Padding Mobile */
+            .video-section,
+            .target-audience,
+            .demand-section,
+            .remuneration,
+            .benefits,
+            .social-proof,
+            .form-section,
+            .faq,
+            .final-cta {
+                padding: 50px 0;
+            }
+
+            /* Typography Mobile */
+            .video-section h2,
+            .demand-section h2,
+            .remuneration h2,
+            .benefits h2,
+            .social-proof h2,
+            .form-section h2,
+            .faq h2,
+            .final-cta h2 {
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+                line-height: 1.3;
+            }
+
+            .video-section p,
+            .demand-content,
+            .remuneration-content {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+
+            /* Important Note Mobile */
+            .important-note {
+                padding: 15px;
+                margin: 30px auto;
+            }
+
+            /* Audience Grid Mobile */
+            .audience-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .audience-column h3 {
+                font-size: 1.4rem;
+                margin-bottom: 20px;
+            }
+
+            .audience-card {
+                padding: 18px;
+                margin-bottom: 15px;
+                font-size: 0.95rem;
+            }
+
+            /* Benefits Grid Mobile */
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .benefit-card {
+                padding: 20px;
+            }
+
+            .benefit-icon {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+
+            .benefit-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+
+            .benefit-card p {
+                font-size: 0.9rem;
+            }
+
+            /* Form Mobile */
+            .form-container {
+                padding: 30px 20px;
+                margin: 0 10px;
+            }
+
+            .form-group input {
+                padding: 12px;
+                font-size: 1rem;
+            }
+
+            /* FAQ Mobile */
+            .faq-container {
+                margin: 0 10px;
+            }
+
+            .faq-question {
+                padding: 15px;
+                font-size: 0.95rem;
+            }
+
+            .faq-answer {
+                padding: 15px;
+            }
+
+            .faq-answer p {
+                font-size: 0.9rem;
+            }
+
+            /* Testimonial Mobile */
+            .testimonial {
+                padding: 20px;
+                margin: 0 10px;
+            }
+
+            .testimonial p {
+                font-size: 0.95rem;
+                margin-bottom: 15px;
+            }
+
+            /* Video Wrapper Mobile */
+            .video-wrapper {
+                margin: 30px auto;
+            }
+
+            /* Container Mobile */
+            .container {
+                padding: 0 15px;
+            }
+
+            /* Final CTA Mobile */
+            .final-cta p {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+        }
+
+        /* Extra Small Mobile */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero h2 {
+                font-size: 1.1rem;
+            }
+
+            .diagnostic-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .diagnostic-item {
+                font-size: 0.9rem;
+            }
+
+            .cta-button {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+            }
+
+            .video-section h2,
+            .demand-section h2,
+            .remuneration h2,
+            .benefits h2,
+            .social-proof h2,
+            .form-section h2,
+            .faq h2,
+            .final-cta h2 {
                 font-size: 1.5rem;
             }
 
-            .audience-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-
             .container {
-                padding: 0 15px;
+                padding: 0 10px;
             }
         }
     </style>
